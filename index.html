@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Willow Strikers - Official Site</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            background: url('/img/cricket-stadium.jpg') no-repeat center center/cover;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #e65c00;
+        }
+
+        .statistics {
+            padding: 40px 0;
+            text-align: center;
+            background: var(--light-bg);
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 20px;
+            flex-basis: 30%;
+            min-width: 250px;
+        }
+
+        .stat-item .number {
+            display: block;
+            font-size: 3em;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .about {
+            padding: 40px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-photo {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            background: #ccc;
+            margin: 20px auto;
+            font-style: italic;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 300px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-bottom: 20px;
+                padding: 15px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>The Willow Strikers</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="book.html" style="cursor: pointer;">Book &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="/chapters/ch01.html">Ch 1: Getting to Know</a>
+                            <a href="/chapters/ch02.html">Ch 2: Elements</a>
+                            <a href="/chapters/ch03.html">Ch 3: Styles</a>
+                            <a href="/chapters/ch04.html">Ch 4: Semantics</a>
+                            <a href="/chapters/ch05.html">Ch 5: Forms</a>
+                            <a href="/chapters/ch06.html">Ch 6: Multimedia</a>
+                            <a href="/chapters/ch07.html">Ch 7: Graphics</a>
+                            <a href="/chapters/ch08.html">Ch 8: Advanced</a>
+                            <a href="/chapters/ch09.html">Ch 9: Tables</a>
+                            <a href="/chapters/ch10.html">Ch 10: Lists</a>
+                            <a href="/chapters/ch11.html">Ch 11: Classes</a>
+                            <a href="/chapters/ch12.html">Ch 12: Selectors</a>
+                            <a href="/chapters/ch13.html">Ch 13: Cascading</a>
+                            <a href="/chapters/ch14.html">Ch 14: Box Model</a>
+                            <a href="/chapters/ch15.html">Ch 15: Colors</a>
+                            <a href="/chapters/ch16.html">Ch 16: Text</a>
+                            <a href="/chapters/ch17.html">Ch 17: Backgrounds</a>
+                            <a href="/chapters/ch18.html">Ch 18: Display</a>
+                            <a href="/chapters/ch19.html">Ch 19: Layout</a>
+                            <a href="/chapters/ch20.html">Ch 20: Animation</a>
+                            <a href="/chapters/ch21.html">Ch 21: Adv CSS</a>
+                            <a href="/chapters/ch22.html">Ch 22: Responsive</a>
+                            <a href="book.html"
+                                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                                Full Curriculum</a>
+                        </div>
+                    </li>
+                    <li><a href="stats.html">Stats</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1><b>Welcome To My Project</b></h1>
+                <p>
+                    Name: M. M. Rakibuzzaman <br />
+                    Trainee ID: 1291263 <br />
+                    Batch: PNTL-A/67/01 <br />
+                    Project: HTML and CSS
+                </p>
+                <a href="book.html" class="cta-button">Book</a>
+            </div>
+        </section>
+
+        <section id="stats" class="statistics">
+            <h3>Season Highlights</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="number">12</span>
+                    <p>Matches Won</p>
+                </div>
+                <div class="stat-item">
+                    <span class="number">350+</span>
+                    <p>Total Wickets</p>
+                </div>
+                <div class="stat-item">
+                    <span class="number">9</span>
+                    <p>Man of the Match Awards</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="about">
+            <div class="container">
+                <h3>Our Legacy</h3>
+                <p>The Willow Strikers embody the spirit of cricket. From thrilling run chases to unyielding bowling
+                    attacks, our commitment to excellence drives us forward every season. We are more than a team; we
+                    are a community.</p>
+                <img src="/img/team-photo.jpg" alt="The Willow Strikers team" class="team-photo"
+                    style="height: auto; line-height: 1; color: var(--text-color);">
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 The Willow Strikers. Follow us on Social Media!</p>
+            <div class="footer-links">
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

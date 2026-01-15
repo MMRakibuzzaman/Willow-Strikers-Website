@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 13: CSS Cascading</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .last-win-example p {
+      color: blue;
+    }
+
+    .last-win-example p {
+      color: red;
+    }
+
+    .specificity-example p {
+      color: black;
+    }
+
+    .specificity-example .highlight {
+      color: red;
+    }
+
+    #specific-id {
+      color: green;
+    }
+
+    .inline-example p {
+      color: blue;
+    }
+
+    #unique-id {
+      color: blue;
+    }
+
+    .important-example .special {
+      color: red !important;
+    }
+
+    .parent {
+      color: blue;
+      font-family: sans-serif;
+      border: 1px dashed #ccc;
+      padding: 10px;
+    }
+
+    .child {
+      margin-left: 20px;
+      border: 1px solid #eee;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 13: CSS Cascading</h1>
+
+  <div id="firstRule">
+    <h2>Rule 1: The Last Declaration Wins</h2>
+    <p>
+      If two selectors have the same specificity, the one defined *last* in the
+      CSS file is applied.
+    </p>
+    <pre><code>/* 1. First we set it to Blue */
+.last-win-example p {
+  color: blue;
+}
+
+/* 2. Then we set it to Red. Since this is last, the text is Red. */
+.last-win-example p {
+  color: red;
+}</code></pre>
+    <div class="example last-win-example">
+      <p>
+        This paragraph was first colored blue, then red. It appears red.
+      </p>
+    </div>
+  </div>
+
+  <div id="secondRule">
+    <h2>Rule 2: Specificity (Weight)</h2>
+    <p>
+      If selectors are different, the "more specific" one wins. <br />
+      <strong>ID (#) > Class (.) > Tag (p)</strong>
+    </p>
+    <pre><code>/* Tag Selector (Weight: 1) */
+.specificity-example p {
+  color: black;
+}
+
+/* Class Selector (Weight: 10) -> Wins over Tag */
+.specificity-example .highlight {
+  color: red;
+}
+
+/* ID Selector (Weight: 100) -> Wins over Class */
+#specific-id {
+  color: green;
+}</code></pre>
+    <div class="example specificity-example">
+      <p class="highlight">
+        I have a Class and a Tag selector. Class wins (Red).
+      </p>
+      <p id="specific-id" class="highlight">
+        I have an ID, a Class, and a Tag selector. ID wins (Green).
+      </p>
+    </div>
+  </div>
+
+  <div id="thirdRule">
+    <h2>Rule 3: Inline Styles</h2>
+    <p>
+      Styles written directly in the HTML `style=""` attribute override external and internal CSS.
+    </p>
+    <pre><code>/* External CSS tries to make it blue */
+.inline-example p {
+  color: blue;
+}
+
+/* But HTML has style="color: red" */</code></pre>
+    <div class="example inline-example">
+      <p style="color: red">
+        This paragraph is red because of the inline style, ignoring the CSS.
+      </p>
+    </div>
+  </div>
+
+  <div id="fourthRule">
+    <h2>Rule 4: The !important Declaration</h2>
+    <p>
+      `!important` overrides all specificity rules. Use strictly for overriding styles you cannot otherwise control.
+    </p>
+    <pre><code>/* ID usually wins (Blue) */
+#unique-id {
+  color: blue;
+}
+
+/* But !important forces this Class to win (Red) */
+.important-example .special {
+  color: red !important;
+}</code></pre>
+    <div class="example important-example">
+      <p class="special" id="unique-id">
+        I have an ID (Blue), but the Class has !important (Red). So I am Red.
+      </p>
+    </div>
+  </div>
+
+  <div id="inheritance">
+    <h2>Inheritance</h2>
+    <p>
+      Some properties (like text color and font) are inherited by child elements from their parents.
+    </p>
+    <pre><code>/* We only style the parent. Children inherit these values. */
+.parent {
+  color: blue;
+  font-family: sans-serif;
+}</code></pre>
+    <div class="example">
+      <div class="parent">
+        I am the Parent (Blue).
+        <div class="child">
+          I am the Child. I inherited the Blue color from my parent.
+          <div class="child">
+            I am the Grandchild. I also inherited the Blue color.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 12: CSS Selectors</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+
+    .universal-example * {
+      border: 1px solid red;
+    }
+
+    .type-example h3 {
+      color: green;
+    }
+
+    #example-id {
+      font-weight: bold;
+      color: #d9534f;
+    }
+
+    .highlight {
+      background-color: #f0ad4e;
+      padding: 5px;
+    }
+
+    .blue.important {
+      color: blue;
+      font-weight: bold;
+    }
+
+    .grouping-example h3,
+    .grouping-example p {
+      border-left: 3px solid #5bc0de;
+      padding-left: 10px;
+    }
+
+    .descendant-example p {
+      background-color: #f7f7f7;
+    }
+
+    .child-example>p {
+      font-style: italic;
+    }
+
+    .adjacent-example h3+p {
+      color: #5cb85c;
+    }
+
+    .general-example h3~.general {
+      text-decoration: underline;
+    }
+
+    .pseudo-class-example a:hover {
+      background-color: yellow;
+    }
+
+    .pseudo-class-example button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .pseudo-element-example p::first-line {
+      font-weight: bold;
+    }
+
+    .pseudo-element-example p::first-letter {
+      font-size: 2em;
+      color: red;
+      float: left;
+      margin-right: 5px;
+    }
+
+    .attribute-example a[target="_blank"] {
+      background-color: #f0ad4e;
+    }
+
+    .attribute-example a[href^="https://"] {
+      font-weight: bold;
+    }
+
+    .attribute-example a[href$=".pdf"] {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 12: CSS Selectors</h1>
+
+  <div id="universalSelector">
+    <h2>Universal Selector (*)</h2>
+    <p>Selects all elements on the page. Use it carefully.</p>
+    <pre><code>/* Selects every element inside the example box */
+.universal-example * {
+  border: 1px solid red;
+}</code></pre>
+    <div class="example universal-example">
+      <h3>This is a heading</h3>
+      <p>This is a paragraph.</p>
+      <span>This is a span.</span>
+    </div>
+  </div>
+
+  <div id="typeSelector">
+    <h2>Type Selector</h2>
+    <p>Selects all elements of a specific type (e.g., `h3`, `p`, `div`).</p>
+    <pre><code>/* Selects all <h3> elements in this example */
+.type-example h3 {
+  color: green;
+}</code></pre>
+    <div class="example type-example">
+      <h3>This heading is green.</h3>
+      <p>This paragraph is not.</p>
+      <h3>This heading is also green.</h3>
+    </div>
+  </div>
+
+  <div id="idSelector">
+    <h2>ID Selector (#)</h2>
+    <p>Selects a single element with a specific `id`. An ID must be unique.</p>
+    <pre><code>/* Selects only the element with id="example-id" */
+#example-id {
+  font-weight: bold;
+  color: #d9534f;
+}</code></pre>
+    <div class="example">
+      <p id="example-id">This text is selected by its ID.</p>
+      <p>This text is not selected.</p>
+    </div>
+  </div>
+
+  <div id="classSelector">
+    <h2>Class Selectors (.)</h2>
+    <p>Selects all elements with a specific `class` attribute.</p>
+
+    <h3>Single Class</h3>
+    <pre><code>/* Selects all elements with class="highlight" */
+.highlight {
+  background-color: #f0ad4e;
+  padding: 5px;
+}</code></pre>
+    <div class="example">
+      <p>This paragraph is <span class="highlight">highlighted</span>.</p>
+    </div>
+
+    <h3>Multi-Class Selector</h3>
+    <p>
+      You can chain class selectors to target elements that have *all* the
+      classes.
+    </p>
+    <pre><code>/* Selects elements with BOTH "blue" AND "important" classes */
+.blue.important {
+  color: blue;
+  font-weight: bold;
+}</code></pre>
+    <div class="example">
+      <p class="blue">This is just blue.</p>
+      <p class="important">This is just important.</p>
+      <p class="blue important">This is blue AND important.</p>
+    </div>
+  </div>
+
+  <div id="groupingSelector">
+    <h2>Grouping Selector (,)</h2>
+    <p>
+      Applies the same style to multiple selectors by separating them with a
+      comma.
+    </p>
+    <pre><code>/* Applies the style to <h3> AND <p> elements in this example */
+.grouping-example h3,
+.grouping-example p {
+  border-left: 3px solid #5bc0de;
+  padding-left: 10px;
+}</code></pre>
+    <div class="example grouping-example">
+      <h3>This heading has the style.</h3>
+      <p>This paragraph also has the style.</p>
+      <span>This span does not.</span>
+    </div>
+  </div>
+
+  <div id="combinatorSelectors">
+    <h2>Combinator Selectors</h2>
+    <p>Selectors that combine other selectors to show relationships.</p>
+
+    <h3>Descendant Combinator (space)</h3>
+    <p>
+      Selects elements that are descendants (children, grandchildren, etc.) of
+      a parent.
+    </p>
+    <pre><code>/* Selects any <p> INSIDE .descendant-example */
+.descendant-example p {
+  background-color: #f7f7f7;
+}</code></pre>
+    <div class="example descendant-example">
+      <p>I am a direct child paragraph (selected).</p>
+      <div>
+        <p>I am a nested paragraph (also selected).</p>
+      </div>
+    </div>
+
+    <h3>Child Combinator (>)</h3>
+    <p>Selects elements that are *direct children* of a parent.</p>
+    <pre><code>/* Selects only <p> that are DIRECT children of .child-example */
+.child-example > p {
+  font-style: italic;
+}</code></pre>
+    <div class="example child-example">
+      <p>I am a direct child paragraph (selected).</p>
+      <div>
+        <p>I am nested, so I am NOT selected.</p>
+      </div>
+    </div>
+
+    <h3>Adjacent Sibling Combinator (+)</h3>
+    <p>
+      Selects an element that is *immediately after* another element at the
+      same level.
+    </p>
+    <pre><code>/* Selects the <p> that comes IMMEDIATELY after an <h3> */
+.adjacent-example h3 + p {
+  color: #5cb85c;
+}</code></pre>
+    <div class="example adjacent-example">
+      <h3>A Heading</h3>
+      <p>This paragraph is selected.</p>
+      <p>This paragraph is not selected.</p>
+      <h3>Another Heading</h3>
+      <p>This paragraph is also selected.</p>
+    </div>
+
+    <h3>General Sibling Combinator (~)</h3>
+    <p>
+      Selects all elements that are *siblings after* another element at the
+      same level.
+    </p>
+    <pre><code>/* Selects all siblings with class="general" AFTER the <h3> */
+.general-example h3 ~ .general {
+  text-decoration: underline;
+}</code></pre>
+    <div class="example general-example">
+      <p>Not selected.</p>
+      <h3>A Heading</h3>
+      <p class="general">Selected.</p>
+      <span>Some other element.</span>
+      <p class="general">Also selected.</p>
+    </div>
+  </div>
+
+  <div id="pseudoClassSelectors">
+    <h2>Pseudo-Class Selectors (:)</h2>
+    <p>
+      Selects elements based on their state or position (e.g., `:hover`,
+      `:checked`, `:disabled`).
+    </p>
+    <pre><code>/* Styles the link when the mouse is over it */
+.pseudo-class-example a:hover {
+  background-color: yellow;
+}
+
+/* Styles the button when it is disabled */
+.pseudo-class-example button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}</code></pre>
+    <div class="example pseudo-class-example">
+      <a href="#">Hover over me!</a>
+      <br /><br />
+      <button>I am enabled</button>
+      <button disabled>I am disabled</button>
+    </div>
+  </div>
+
+  <div id="pseudoElementSelectors">
+    <h2>Pseudo-Element Selectors (::)</h2>
+    <p>
+      Styles a specific *part* of an element (e.g., `::first-line`,
+      `::first-letter`).
+    </p>
+    <pre><code>/* Styles the first line of the paragraph */
+.pseudo-element-example p::first-line {
+  font-weight: bold;
+}
+
+/* Styles the first letter of the paragraph */
+.pseudo-element-example p::first-letter {
+  font-size: 2em;
+  color: red;
+  float: left;
+  margin-right: 5px;
+}</code></pre>
+    <div class="example pseudo-element-example">
+      <p>
+        This is a paragraph of text. The first line will be bold, and the very
+        first letter will be large and red. The rest of the text will flow
+        around it normally. This is often used for a drop-cap effect.
+        </S>
+    </div>
+  </div>
+
+  <div id="attributeSelectors">
+    <h2>Attribute Selectors ([])</h2>
+    <p>Selects elements based on their attributes and attribute values.</p>
+    <pre><code>/* Selects links that open in a new tab */
+.attribute-example a[target="_blank"] {
+  background-color: #f0ad4e;
+}
+
+/* Selects links whose href STARTS WITH "https://" */
+.attribute-example a[href^="https://"] {
+  font-weight: bold;
+}
+
+/* Selects links whose href ENDS WITH ".pdf" */
+.attribute-example a[href$=".pdf"] {
+  text-decoration: underline;
+}</code></pre>
+    <div class="example attribute-example">
+      <ul>
+        <li>
+          <a href="https://google.com" target="_blank">Google (new tab)</a>
+        </li>
+        <li><a href="http://example.com">Insecure link</a></li>
+        <li><a href="/files/document.pdf">Document (PDF)</a></li>
+        <li><a href="#internal-link">Internal Link</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

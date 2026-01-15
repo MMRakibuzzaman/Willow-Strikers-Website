@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 14: CSS Box Model</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .box {
+      background-color: #e2e3e5;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .content-box {
+      width: 200px;
+      padding: 20px;
+      border: 10px solid blue;
+      box-sizing: content-box;
+    }
+
+    .border-box {
+      width: 200px;
+      padding: 20px;
+      border: 10px solid green;
+      box-sizing: border-box;
+    }
+
+    .margin-standard {
+      margin: 50px;
+      border: 1px solid red;
+      background-color: #f8d7da;
+    }
+
+    .margin-auto {
+      width: 50%;
+      margin: 0 auto;
+      border: 1px solid blue;
+      background-color: #d1ecf1;
+    }
+
+    .collapse-one {
+      margin-bottom: 50px;
+      background-color: coral;
+      height: 50px;
+    }
+
+    .collapse-two {
+      margin-top: 30px;
+      background-color: lightblue;
+      height: 50px;
+    }
+
+    .outline-example {
+      border: 5px solid black;
+      outline: 5px dashed red;
+      outline-offset: 5px;
+      margin: 20px;
+    }
+
+    .border-style {
+      border-width: 5px;
+      border-style: double;
+      border-color: purple;
+    }
+
+    .border-radius {
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 10px;
+    }
+
+    .padding-example {
+      border: 1px solid black;
+      padding: 50px;
+      background-color: lightyellow;
+    }
+
+    .dimension-fixed {
+      width: 300px;
+      height: 100px;
+      background-color: #c3e6cb;
+    }
+
+    .dimension-percent {
+      width: 50%;
+      height: 50px;
+      background-color: #ffeeba;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 14: CSS Box Model</h1>
+
+  <div id="boxsizingtype">
+    <h2>Box Sizing Types</h2>
+    <p>
+      `box-sizing` defines how the width and height of an element are calculated.
+    </p>
+    <pre><code>/* Total Width = 200px + 40px (padding) + 20px (border) = 260px */
+.content-box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid blue;
+  box-sizing: content-box;
+}
+
+/* Total Width = 200px (Padding and Border are included inside) */
+.border-box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid green;
+  box-sizing: border-box;
+}</code></pre>
+    <div class="example">
+      <div class="content-box">I am Content Box (Wider)</div>
+      <div class="border-box">I am Border Box (Exact Width)</div>
+    </div>
+  </div>
+
+  <div id="cssMargin">
+    <h2>CSS Margins</h2>
+
+    <h3>Standard Margin</h3>
+    <p>Margin creates space <b>outside</b> the border.</p>
+    <pre><code>.margin-standard {
+  margin: 50px;
+}</code></pre>
+    <div class="example">
+      <div class="margin-standard">I have 50px margin on all sides.</div>
+    </div>
+
+    <h3>Auto Margin (Centering)</h3>
+    <p>Setting `margin: auto` on the left and right centers a block element.</p>
+    <pre><code>.margin-auto {
+  width: 50%;
+  margin: 0 auto;
+}</code></pre>
+    <div class="example">
+      <div class="margin-auto">I am centered horizontally.</div>
+    </div>
+
+    <h3>Collapsing Margins</h3>
+    <p>Vertical margins collapse. The distance is the larger of the two, not the sum.</p>
+    <pre><code>.box1 { margin-bottom: 50px; }
+.box2 { margin-top: 30px; }
+/* The gap between them is 50px, NOT 80px */</code></pre>
+    <div class="example">
+      <div class="collapse-one">Box 1 (Bottom Margin: 50px)</div>
+      <div class="collapse-two">Box 2 (Top Margin: 30px)</div>
+    </div>
+  </div>
+
+  <div id="cssOutline">
+    <h2>CSS Outline</h2>
+    <p>An outline is drawn outside the border. Unlike border, it does not take up space.</p>
+    <pre><code>.outline-example {
+  border: 5px solid black;
+  outline: 5px dashed red;
+  outline-offset: 5px;
+}</code></pre>
+    <div class="example">
+      <div class="outline-example">
+        I have a black border and a red outline.
+      </div>
+    </div>
+  </div>
+
+  <div id="cssBorder">
+    <h2>CSS Borders</h2>
+
+    <h3>Border Style</h3>
+    <pre><code>.border-style {
+  border: 5px double purple;
+}</code></pre>
+    <div class="example">
+      <div class="border-style">I have a double purple border.</div>
+    </div>
+
+    <h3>Border Radius</h3>
+    <pre><code>.border-radius {
+  border: 2px solid black;
+  border-radius: 20px;
+}</code></pre>
+    <div class="example">
+      <div class="border-radius">I have rounded corners.</div>
+    </div>
+  </div>
+
+  <div id="cssPadding">
+    <h2>CSS Padding</h2>
+    <p>Padding creates space <b>inside</b> the border, around the content.</p>
+    <pre><code>.padding-example {
+  border: 1px solid black;
+  padding: 50px;
+}</code></pre>
+    <div class="example">
+      <div class="padding-example">
+        I have 50px padding. The text is pushed away from the border.
+      </div>
+    </div>
+  </div>
+
+  <div id="cssWidthAndHeight">
+    <h2>CSS Width and Height</h2>
+    <p>Defining explicit dimensions.</p>
+    <pre><code>.dimension-fixed {
+  width: 300px;
+  height: 100px;
+}
+
+.dimension-percent {
+  width: 50%;
+  height: 50px;
+}</code></pre>
+    <div class="example">
+      <div class="dimension-fixed">Fixed Width (300px)</div>
+      <br>
+      <div class="dimension-percent">Percentage Width (50%)</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

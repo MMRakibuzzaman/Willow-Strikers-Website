@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 20: CSS Transitions & Animations</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .trans-basic {
+      transition: width 1s, background-color 1s;
+    }
+
+    .trans-basic:hover {
+      width: 300px;
+      background-color: cornflowerblue;
+    }
+
+    .trans-delay {
+      transition: transform 1s;
+      transition-delay: 1s;
+    }
+
+    .trans-delay:hover {
+      transform: rotate(180deg);
+    }
+
+    .timing-container:hover .t-box {
+      width: 100%;
+    }
+
+    .t-box {
+      height: 30px;
+      background: lightseagreen;
+      margin-bottom: 5px;
+      width: 50px;
+      color: white;
+      font-size: 12px;
+      line-height: 30px;
+      padding-left: 5px;
+      transition: width 2s;
+    }
+
+    .t-linear {
+      transition-timing-function: linear;
+    }
+
+    .t-ease {
+      transition-timing-function: ease;
+    }
+
+    .t-ease-in {
+      transition-timing-function: ease-in;
+    }
+
+    .t-ease-out {
+      transition-timing-function: ease-out;
+    }
+
+    .t-ease-in-out {
+      transition-timing-function: ease-in-out;
+    }
+
+
+    @keyframes move-right {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(300px);
+      }
+    }
+
+    @keyframes color-cycle {
+      0% {
+        background-color: tomato;
+      }
+
+      50% {
+        background-color: yellow;
+        color: black;
+      }
+
+      100% {
+        background-color: purple;
+      }
+    }
+
+    .anim-basic {
+      animation-name: move-right;
+      animation-duration: 3s;
+      animation-fill-mode: forwards;
+    }
+
+    .anim-multi {
+      animation-name: color-cycle;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    .anim-delay {
+      animation-name: move-right;
+      animation-duration: 2s;
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+    }
+
+    .anim-dir-alt {
+      animation: move-right 2s infinite;
+      animation-direction: alternate;
+    }
+
+    .anim-timing-box {
+      height: 30px;
+      background: orange;
+      margin-bottom: 5px;
+      width: 50px;
+      font-size: 12px;
+      line-height: 30px;
+      padding-left: 5px;
+      animation-name: move-right;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    .a-linear {
+      animation-timing-function: linear;
+    }
+
+    .a-ease {
+      animation-timing-function: ease;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 20: CSS Transitions & Animations</h1>
+
+  <div id="cssTransitions">
+    <h2>CSS Transitions</h2>
+    <p>Changes property values smoothly (over a given duration) when triggered (e.g., on hover).</p>
+
+    <h3>Basic Transition</h3>
+    <p>Hover over the box to see it grow and change color.</p>
+    <pre><code>.trans-basic {
+  transition: width 1s, background-color 1s;
+}
+.trans-basic:hover {
+  width: 300px;
+  background-color: cornflowerblue;
+}</code></pre>
+    <div class="example">
+      <div class="box trans-basic">Hover Me</div>
+    </div>
+
+    <h3>Transition Delay</h3>
+    <p>Hover over the box. The rotation starts after 1 second.</p>
+    <pre><code>.trans-delay {
+  transition: transform 1s;
+  transition-delay: 1s;
+}</code></pre>
+    <div class="example">
+      <div class="box trans-delay">Wait 1s...</div>
+    </div>
+
+    <h3>Transition Timing Functions</h3>
+    <p>Hover over the container below to compare speed curves.</p>
+    <pre><code>.t-linear { transition-timing-function: linear; } /* Constant speed */
+.t-ease { transition-timing-function: ease; } /* Slow start, fast, slow end */</code></pre>
+    <div class="example timing-container" style="border: 1px dashed #ccc;">
+      <div class="t-box t-linear">Linear</div>
+      <div class="t-box t-ease">Ease</div>
+      <div class="t-box t-ease-in">Ease-In</div>
+      <div class="t-box t-ease-out">Ease-Out</div>
+      <div class="t-box t-ease-in-out">In-Out</div>
+    </div>
+  </div>
+
+  <div id="cssAnimations">
+    <h2>CSS Animations</h2>
+    <p>Complex animations using `@keyframes` that run automatically.</p>
+
+    <h3>Basic Animation (Keyframes)</h3>
+    <pre><code>@keyframes move-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(300px); }
+}
+.anim-basic {
+  animation: move-right 3s forwards;
+}</code></pre>
+    <div class="example">
+      <div class="box anim-basic">Moving</div>
+    </div>
+
+    <h3>Multiple Keyframes & Infinite Loop</h3>
+    <pre><code>@keyframes color-cycle {
+  0% { background: tomato; }
+  50% { background: yellow; }
+  100% { background: purple; }
+}
+.anim-multi {
+  animation: color-cycle 4s infinite;
+}</code></pre>
+    <div class="example">
+      <div class="box anim-multi">Colors</div>
+    </div>
+
+    <h3>Direction: Alternate</h3>
+    <p>Plays forward, then backward.</p>
+    <pre><code>.anim-dir-alt {
+  animation: move-right 2s infinite alternate;
+}</code></pre>
+    <div class="example">
+      <div class="box anim-dir-alt">Ping Pong</div>
+    </div>
+
+    <h3>Animation Timing Functions</h3>
+    <div class="example">
+      <div class="anim-timing-box a-linear">Linear</div>
+      <div class="anim-timing-box a-ease">Ease</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

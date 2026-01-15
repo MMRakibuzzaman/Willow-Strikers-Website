@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2: Elements</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+      color: #d63384;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 2: HTML Elements</h1>
+
+  <h3>Headings & Paragraphs</h3>
+  <div class="example">
+    <h1>Heading 1</h1>
+    <h3>Heading 3</h3>
+    <p>This is a standard paragraph element.</p>
+  </div>
+
+  <h3>Lists</h3>
+  <div class="example">
+    <ul>
+      <li>Unordered List Item</li>
+      <li>Unordered List Item</li>
+    </ul>
+    <ol>
+      <li>Ordered List Item</li>
+      <li>Ordered List Item</li>
+    </ol>
+    <dl>
+      <dt>Description Term</dt>
+      <dd>Description details goes here.</dd>
+    </dl>
+  </div>
+
+  <h3>Tables</h3>
+  <div class="example">
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>January</td>
+          <td>$100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Progress & Meter</h3>
+  <div class="example">
+    <label>Progress:</label>
+    <progress value="70" max="100"></progress><br><br>
+    <label>Disk Usage:</label>
+    <meter value="0.6">60%</meter>
+  </div>
+
+  <h3>Preformatted Text</h3>
+  <div class="example">
+    <pre>
+  Text in a pre element
+  preserves      spaces
+  and line breaks.
+</pre>
+  </div>
+
+  <h3>Iframe</h3>
+  <div class="example">
+    <iframe src="https://example.org" height="300px" width="100%" style="border:none;"></iframe>
+  </div>
+</body>
+
+</html>

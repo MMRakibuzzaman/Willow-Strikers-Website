@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 19: CSS Layout</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .box {
+      background-color: tomato;
+      color: white;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .pos-container {
+      background-color: #eee;
+      height: 200px;
+      border: 1px dashed #333;
+      position: relative;
+      overflow: auto;
+    }
+
+    .pos-box {
+      width: 100px;
+      height: 50px;
+      background: cornflowerblue;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+    }
+
+    .p-static {
+      position: static;
+    }
+
+    .p-relative {
+      position: relative;
+      left: 20px;
+      top: 10px;
+      background: purple;
+    }
+
+    .p-absolute {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: red;
+    }
+
+    .p-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: green;
+      width: 150px;
+      z-index: 100;
+    }
+
+    .p-sticky {
+      position: sticky;
+      top: 0;
+      background: orange;
+    }
+
+    .float-container {
+      border: 1px solid #ccc;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .f-left {
+      float: left;
+      background: lightblue;
+      padding: 10px;
+    }
+
+    .f-right {
+      float: right;
+      background: lightgreen;
+      padding: 10px;
+    }
+
+    .flex-container {
+      display: flex;
+      background-color: #eee;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .flex-row {
+      flex-direction: row;
+    }
+
+    .flex-col-rev {
+      flex-direction: column-reverse;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 10px;
+      background-color: #eee;
+      padding: 10px;
+    }
+
+    .grid-align {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 150px;
+      gap: 10px;
+      background-color: #ddd;
+    }
+
+    .align-example {
+      height: 150px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+
+    .center-h {
+      width: 50%;
+      margin: 0 auto;
+      background: tomato;
+      color: white;
+      text-align: center;
+    }
+
+    .center-perfect {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 19: CSS Layout</h1>
+
+  <div id="cssPosition">
+    <h2>CSS Position</h2>
+    <p>Controls where an element is placed in the document.</p>
+    <pre><code>.p-static { position: static; } /* Default */
+.p-relative { position: relative; left: 20px; } /* Offset from normal */
+.p-absolute { position: absolute; top: 0; right: 0; } /* Relative to parent */
+.p-sticky { position: sticky; top: 0; } /* Sticks on scroll */
+.p-fixed { position: fixed; bottom: 20px; right: 20px; } /* Relative to viewport */</code></pre>
+
+    <div class="example pos-container">
+      <div class="pos-box p-static">Static</div>
+      <div class="pos-box p-relative">Relative</div>
+      <div class="pos-box p-absolute">Absolute</div>
+      <div class="pos-box p-sticky">Sticky</div>
+      <div style="height: 400px; padding: 10px;">(Scroll me to see Sticky in action)</div>
+    </div>
+    <div class="pos-box p-fixed">I am Fixed</div>
+  </div>
+
+  <div id="cssFloat">
+    <h2>CSS Float</h2>
+    <p>Pushes elements to the left or right, allowing text to wrap around them.</p>
+    <pre><code>.f-left { float: left; }
+.f-right { float: right; }</code></pre>
+    <div class="example float-container">
+      <div class="f-left">Float Left</div>
+      <div class="f-right">Float Right</div>
+      <p>
+        This is normal text content inside the container. Because the boxes above are floated, this text will flow in
+        the space between them (or below them if there isn't enough room).
+      </p>
+    </div>
+  </div>
+
+  <div id="cssFlexbox">
+    <h2>CSS Flexbox</h2>
+
+    <h3>Flex Direction: Row (Default)</h3>
+    <pre><code>.flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}</code></pre>
+    <div class="example flex-container flex-row">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <h3>Flex Direction: Column Reverse</h3>
+    <pre><code>.flex-container {
+  display: flex;
+  flex-direction: column-reverse;
+}</code></pre>
+    <div class="example flex-container flex-col-rev">
+      <div class="box">1 (Bottom)</div>
+      <div class="box">2 (Middle)</div>
+      <div class="box">3 (Top)</div>
+    </div>
+  </div>
+
+  <div id="cssGrid">
+    <h2>CSS Grid</h2>
+
+    <h3>Basic 3-Column Grid</h3>
+    <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+}</code></pre>
+    <div class="example grid-container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+    </div>
+
+    <h3>Align & Justify Items</h3>
+    <p>Controls alignment inside the grid cells.</p>
+    <pre><code>/* justify-items: Horizontal (start | center | end) */
+/* align-items: Vertical (start | center | end) */
+.grid-align {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}</code></pre>
+    <div class="example grid-align" style="justify-items: center; align-items: center;">
+      <div class="box" style="padding: 5px;">Centered</div>
+      <div class="box" style="padding: 5px;">Centered</div>
+    </div>
+  </div>
+
+  <div id="cssAlignment">
+    <h2>CSS Alignment Techniques</h2>
+
+    <h3>Horizontal Centering (Block)</h3>
+    <pre><code>.center-h {
+  width: 50%;
+  margin: 0 auto;
+}</code></pre>
+    <div class="example">
+      <div class="center-h">I am centered with margin: auto</div>
+    </div>
+
+    <h3>Perfect Centering (Flexbox)</h3>
+    <p>Centers content both horizontally and vertically.</p>
+    <pre><code>.center-perfect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+    <div class="example align-example center-perfect">
+      <div class="box">Perfect Center</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

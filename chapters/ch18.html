@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 18: CSS Display</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .d-block {
+      display: block;
+      background: lightblue;
+      margin-bottom: 5px;
+    }
+
+    .d-inline {
+      display: inline;
+      background: lightgreen;
+    }
+
+    .d-inline-block {
+      display: inline-block;
+      background: lightcoral;
+      width: 150px;
+      padding: 5px;
+    }
+
+    .d-none {
+      display: none;
+    }
+
+    .v-hidden {
+      visibility: hidden;
+      background: grey;
+    }
+
+    .fit-box img {
+      width: 150px;
+      height: 100px;
+      border: 2px solid black;
+      background: #ddd;
+    }
+
+    .fit-contain {
+      object-fit: contain;
+    }
+
+    .fit-cover {
+      object-fit: cover;
+    }
+
+    .fit-fill {
+      object-fit: fill;
+    }
+
+    .fit-none {
+      object-fit: none;
+    }
+
+    .cursor-grid div {
+      padding: 10px;
+      background: #eee;
+      border: 1px solid #ccc;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .c-pointer {
+      cursor: pointer;
+    }
+
+    .c-not-allowed {
+      cursor: not-allowed;
+    }
+
+    .c-grab {
+      cursor: grab;
+    }
+
+    .c-text {
+      cursor: text;
+    }
+
+    .overflow-box {
+      width: 200px;
+      height: 60px;
+      border: 1px solid black;
+      margin-bottom: 10px;
+    }
+
+    .ov-visible {
+      overflow: visible;
+    }
+
+    .ov-hidden {
+      overflow: hidden;
+    }
+
+    .ov-scroll {
+      overflow: scroll;
+    }
+
+    .ov-auto {
+      overflow: auto;
+    }
+
+    .op-100 {
+      opacity: 1;
+      background: tomato;
+      padding: 10px;
+    }
+
+    .op-50 {
+      opacity: 0.5;
+      background: tomato;
+      padding: 10px;
+    }
+
+    .op-25 {
+      opacity: 0.25;
+      background: tomato;
+      padding: 10px;
+    }
+
+    .shadow-text {
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .shadow-box {
+      width: 150px;
+      padding: 20px;
+      background: white;
+      box-shadow: 10px 10px 5px lightgrey;
+      border: 1px solid #eee;
+    }
+
+    .multi-col {
+      column-count: 3;
+      column-gap: 30px;
+      column-rule: 1px solid #ccc;
+    }
+
+    .col-span {
+      column-span: all;
+      background: #eee;
+      text-align: center;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .styled-table th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    .list-circle {
+      list-style-type: circle;
+    }
+
+    .list-roman {
+      list-style-type: upper-roman;
+    }
+
+    .list-none {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .trans-box {
+      width: 100px;
+      height: 100px;
+      background-color: teal;
+      color: white;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      transition: transform 0.5s;
+    }
+
+    .tr-translate:hover {
+      transform: translate(20px, -20px);
+    }
+
+    .tr-rotate:hover {
+      transform: rotate(45deg);
+    }
+
+    .tr-scale:hover {
+      transform: scale(1.5);
+    }
+
+    .tr-skew:hover {
+      transform: skewX(20deg);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 18: CSS Display</h1>
+
+  <div id="displayVSvisibility">
+    <h2>Display vs. Visibility</h2>
+    <p>Control how elements are rendered and if they take up space.</p>
+    <pre><code>.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-none { display: none; } /* No space reserved */
+.v-hidden { visibility: hidden; } /* Space reserved */</code></pre>
+    <div class="example">
+      <div class="d-block">Block Element 1</div>
+      <div class="d-block">Block Element 2</div>
+      <hr>
+      <div class="d-inline">Inline 1</div>
+      <div class="d-inline">Inline 2</div>
+      <hr>
+      <div class="d-inline-block">Inline-Block 1</div>
+      <div class="d-inline-block">Inline-Block 2</div>
+      <hr>
+      <div>I am visible.</div>
+      <div class="d-none">I am display: none (I don't exist here).</div>
+      <div class="v-hidden">I am visibility: hidden (I leave a gap).</div>
+      <div>I am visible.</div>
+    </div>
+  </div>
+
+  <div id="cssObjectFit">
+    <h2>CSS Object Fit</h2>
+    <p>How an image adapts to its container dimensions.</p>
+    <pre><code>.fit-contain { object-fit: contain; }
+.fit-cover { object-fit: cover; }</code></pre>
+    <div class="example fit-box">
+      <img class="fit-contain" src="https://placehold.co/200x200/orange/white?text=Img" alt="Contain">
+      <img class="fit-cover" src="https://placehold.co/200x200/orange/white?text=Img" alt="Cover">
+      <img class="fit-fill" src="https://placehold.co/200x200/orange/white?text=Img" alt="Fill">
+    </div>
+  </div>
+
+  <div id="cursor">
+    <h2>Cursor</h2>
+    <p>Change the mouse pointer on hover.</p>
+    <pre><code>.c-pointer { cursor: pointer; }
+.c-not-allowed { cursor: not-allowed; }</code></pre>
+    <div class="example cursor-grid">
+      <div class="c-pointer">Pointer</div>
+      <div class="c-not-allowed">Not Allowed</div>
+      <div class="c-grab">Grab</div>
+      <div class="c-text">Text</div>
+    </div>
+  </div>
+
+  <div id="cssOverflow">
+    <h2>CSS Overflow</h2>
+    <p>Handling content that is too big for its container.</p>
+    <pre><code>.ov-visible { overflow: visible; }
+.ov-hidden { overflow: hidden; }
+.ov-scroll { overflow: scroll; }</code></pre>
+    <div class="example">
+      <strong>Visible:</strong>
+      <div class="overflow-box ov-visible">
+        This text is too long for the box but it spills out over the edge visibly.
+      </div>
+      <br>
+      <strong>Hidden:</strong>
+      <div class="overflow-box ov-hidden">
+        This text is too long for the box and the extra content is clipped off.
+      </div>
+      <strong>Scroll:</strong>
+      <div class="overflow-box ov-scroll">
+        This text is too long but you can scroll to see the rest of it.
+      </div>
+    </div>
+  </div>
+
+  <div id="cssOpacity">
+    <h2>CSS Opacity</h2>
+    <p>Transparency levels from 0 (invisible) to 1 (solid).</p>
+    <pre><code>.op-50 { opacity: 0.5; }</code></pre>
+    <div class="example">
+      <div class="op-100">Opacity 1.0</div>
+      <div class="op-50">Opacity 0.5</div>
+      <div class="op-25">Opacity 0.25</div>
+    </div>
+  </div>
+
+  <div id="cssShadows">
+    <h2>CSS Shadows</h2>
+    <pre><code>/* x-offset y-offset blur color */
+.shadow-text { text-shadow: 2px 2px 4px #000; }
+.shadow-box { box-shadow: 10px 10px 5px grey; }</code></pre>
+    <div class="example">
+      <h3 class="shadow-text">Text Shadow Effect</h3>
+      <div class="shadow-box">Box Shadow</div>
+    </div>
+  </div>
+
+  <div id="cssMultipleColumns">
+    <h2>CSS Multiple Columns</h2>
+    <p>Split text into newspaper-style columns.</p>
+    <pre><code>.multi-col {
+  column-count: 3;
+  column-gap: 30px;
+  column-rule: 1px solid #ccc;
+}
+.col-span { column-span: all; }</code></pre>
+    <div class="example multi-col">
+      <h3 class="col-span">Headline Spanning All Columns</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+      </p>
+    </div>
+  </div>
+
+  <div id="cssTable">
+    <h2>CSS Tables</h2>
+    <p>Using <code>border-collapse</code> for clean table lines.</p>
+    <pre><code>.styled-table { border-collapse: collapse; }
+.styled-table td { border: 1px solid #ddd; }</code></pre>
+    <div class="example">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>Alice</td>
+            <td>Admin</td>
+          </tr>
+          <tr>
+            <td>102</td>
+            <td>Bob</td>
+            <td>User</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cssList">
+    <h2>CSS Lists</h2>
+    <pre><code>.list-roman { list-style-type: upper-roman; }
+.list-none { list-style-type: none; }</code></pre>
+    <div class="example">
+      <ul class="list-circle">
+        <li>Circle Item 1</li>
+        <li>Circle Item 2</li>
+      </ul>
+      <ol class="list-roman">
+        <li>Roman Item 1</li>
+        <li>Roman Item 2</li>
+      </ol>
+      <ul class="list-none">
+        <li>No Bullet Item 1</li>
+        <li>No Bullet Item 2</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="cssTransforms">
+    <h2>CSS Transforms</h2>
+    <p>Hover over the boxes to see the transformation.</p>
+    <pre><code>.tr-translate:hover { transform: translate(20px, -20px); }
+.tr-rotate:hover { transform: rotate(45deg); }
+.tr-scale:hover { transform: scale(1.5); }
+.tr-skew:hover { transform: skewX(20deg); }</code></pre>
+    <div class="example">
+      <div class="trans-box tr-translate">Translate</div>
+      <div class="trans-box tr-rotate">Rotate</div>
+      <div class="trans-box tr-scale">Scale</div>
+      <div class="trans-box tr-skew">Skew</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 16: CSS Text</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .color-tomato {
+      color: tomato;
+    }
+
+    .deco-line {
+      text-decoration: underline;
+    }
+
+    .deco-through {
+      text-decoration: line-through;
+    }
+
+    .case-upper {
+      text-transform: uppercase;
+    }
+
+    .case-cap {
+      text-transform: capitalize;
+    }
+
+    .space-letter {
+      letter-spacing: 5px;
+    }
+
+    .space-word {
+      word-spacing: 10px;
+    }
+
+    .line-height {
+      line-height: 2.0;
+    }
+
+    .align-center {
+      text-align: center;
+      border: 1px dashed #ccc;
+    }
+
+    .align-right {
+      text-align: right;
+      border: 1px dashed #ccc;
+    }
+
+    .align-justify {
+      text-align: justify;
+      width: 300px;
+      border: 1px dashed #ccc;
+    }
+
+    .indent {
+      text-indent: 50px;
+    }
+
+    .space-pre {
+      white-space: pre;
+      border: 1px solid blue;
+      overflow: auto;
+    }
+
+    .overflow-ellipsis {
+      width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border: 1px solid red;
+    }
+
+    .break-word {
+      width: 150px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      border: 1px solid green;
+    }
+
+    .font-serif {
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    .font-sans {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .font-mono {
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .weight-bold {
+      font-weight: bold;
+    }
+
+    .style-italic {
+      font-style: italic;
+    }
+
+    .variant-caps {
+      font-variant: small-caps;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 16: CSS Text</h1>
+
+  <div id="textRendering">
+    <h2>Text Rendering</h2>
+
+    <h3>Color & Decoration</h3>
+    <pre><code>.color-tomato {
+  color: tomato;
+}
+.deco-line {
+  text-decoration: underline;
+}
+.deco-through {
+  text-decoration: line-through;
+}</code></pre>
+    <div class="example">
+      <p class="color-tomato">I am tomato colored.</p>
+      <p class="deco-line">I have an underline.</p>
+      <p class="deco-through">I have a line-through.</p>
+    </div>
+
+    <h3>Transformation</h3>
+    <pre><code>.case-upper {
+  text-transform: uppercase;
+}
+.case-cap {
+  text-transform: capitalize;
+}</code></pre>
+    <div class="example">
+      <p class="case-upper">this was lowercase.</p>
+      <p class="case-cap">this text is capitalized.</p>
+    </div>
+  </div>
+
+  <div id="textSpacing">
+    <h2>Text Spacing</h2>
+
+    <h3>Spacing & Line Height</h3>
+    <pre><code>.space-letter {
+  letter-spacing: 5px;
+}
+.space-word {
+  word-spacing: 10px;
+}
+.line-height {
+  line-height: 2.0;
+}</code></pre>
+    <div class="example">
+      <p class="space-letter">Wide Letters</p>
+      <p class="space-word">Wide Word Spacing</p>
+      <p class="line-height">
+        This paragraph has a large line-height. It creates more vertical space between lines of text, improving
+        readability for long blocks of content.
+      </p>
+    </div>
+  </div>
+
+  <div id="textPosition">
+    <h2>Text Position</h2>
+
+    <h3>Alignment</h3>
+    <pre><code>.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}</code></pre>
+    <div class="example">
+      <p class="align-center">Centered Text</p>
+      <p class="align-right">Right Aligned Text</p>
+    </div>
+
+    <h3>Justify & Indent</h3>
+    <pre><code>.align-justify {
+  text-align: justify;
+}
+.indent {
+  text-indent: 50px;
+}</code></pre>
+    <div class="example">
+      <p class="align-justify">
+        <strong>Justify:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+      </p>
+      <p class="indent">
+        <strong>Indent:</strong> This paragraph has a text-indent. The first line starts further to the right than the
+        rest of the text block.
+      </p>
+    </div>
+  </div>
+
+  <div id="textOverflow">
+    <h2>Overflow & Handling</h2>
+
+    <h3>Whitespace & Ellipsis</h3>
+    <pre><code>/* Preserves spaces and line breaks */
+.space-pre {
+  white-space: pre;
+}
+
+/* Truncates text with ... */
+.overflow-ellipsis {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}</code></pre>
+    <div class="example">
+      <p class="space-pre">
+        This text preserves
+        spaces and breaks.
+      </p>
+      <p class="overflow-ellipsis">
+        This text is too long for the box and will be cut off with dots.
+      </p>
+    </div>
+
+    <h3>Word Breaking</h3>
+    <pre><code>/* Forces long words to break */
+.break-word {
+  overflow-wrap: break-word;
+}</code></pre>
+    <div class="example">
+      <p class="break-word">
+        Thisisaverylongwordthatwillwraptothenextlineifthecontainerwidthisreached.
+      </p>
+    </div>
+  </div>
+
+  <div id="cssfonts">
+    <h2>CSS Fonts</h2>
+
+    <h3>Font Family</h3>
+    <pre><code>.font-serif {
+  font-family: serif;
+}
+.font-sans {
+  font-family: sans-serif;
+}
+.font-mono {
+  font-family: monospace;
+}</code></pre>
+    <div class="example">
+      <p class="font-serif">This is a Serif font.</p>
+      <p class="font-sans">This is a Sans-Serif font.</p>
+      <p class="font-mono">This is a Monospace font.</p>
+    </div>
+
+    <h3>Style, Weight & Variant</h3>
+    <pre><code>.weight-bold {
+  font-weight: bold;
+}
+.style-italic {
+  font-style: italic;
+}
+.variant-caps {
+  font-variant: small-caps;
+}</code></pre>
+    <div class="example">
+      <p class="weight-bold">Bold Text</p>
+      <p class="style-italic">Italic Text</p>
+      <p class="variant-caps">Small Caps Text</p>
+    </div>
+
+    <h3>@font-face (Syntax Only)</h3>
+    <p>Used to load custom fonts from a file.</p>
+    <pre><code>@font-face {
+  font-family: "MyCustomFont";
+  src: url("myfont.woff2");
+}
+
+.custom-font {
+  font-family: "MyCustomFont", sans-serif;
+}</code></pre>
+  </div>
+
+</body>
+
+</html>

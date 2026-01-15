@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 7: Graphics</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+      color: #d63384;
+    }
+
+    canvas {
+      border: 1px solid #ccc;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 7: Graphics</h1>
+
+  <h3>SVG (Scalable Vector Graphics)</h3>
+  <p>SVG defines graphics in XML format directly in the HTML.</p>
+
+  <div class="example">
+    <svg width="100" height="100">
+      <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>
+
+    <svg width="100" height="100">
+      <rect x="10" y="10" width="80" height="60" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5" />
+    </svg>
+
+    <svg width="100" height="100">
+      <polygon points="50,5 20,99 95,39 5,39 80,99" style="fill:lime;stroke:purple;stroke-width:1" />
+    </svg>
+  </div>
+
+  <h3>Canvas</h3>
+  <p>Canvas is used to draw graphics on the fly via JavaScript.</p>
+
+  <div class="example">
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+
+    <script>
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+
+      // Draw Rectangle
+      ctx.fillStyle = "red";
+      ctx.fillRect(10, 10, 50, 50);
+
+      // Draw Line
+      ctx.moveTo(70, 10);
+      ctx.lineTo(150, 60);
+      ctx.stroke();
+
+      // Draw Text
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "blue";
+      ctx.fillText("Canvas", 70, 90);
+    </script>
+  </div>
+</body>
+
+</html>

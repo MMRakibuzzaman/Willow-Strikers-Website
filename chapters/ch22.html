@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 22: Responsive CSS</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+      background-color: #f4f4f4;
+    }
+
+
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .gallery-intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .gallery-intro h1 {
+      margin-bottom: 10px;
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 1.1em;
+      color: #007bff;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    .btn-add {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-buy {
+      background-color: #ffc107;
+      color: black;
+    }
+
+
+    @media screen and (max-width: 992px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .explanation {
+      background-color: #e9ecef;
+      padding: 15px;
+      margin-bottom: 30px;
+      border-left: 5px solid tomato;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-content">
+
+    <div class="chapterName">
+      <h1><b>CHAPTER 22: Responsive CSS</b></h1>
+    </div>
+
+    <div class="explanation">
+      <h3>How this page works:</h3>
+      <p><strong>1. Viewport Meta Tag:</strong> Ensures the page scales correctly on mobile devices.</p>
+      <p><strong>2. CSS Grid:</strong> The product list uses <code>grid-template-columns</code>.</p>
+      <p><strong>3. Media Queries:</strong>
+        <br>• On Desktop (>992px): 4 Columns
+        <br>• On Tablet (<992px): 2 Columns <br>• On Mobile (<600px): 1 Column </p>
+    </div>
+
+    <div class="gallery-intro">
+      <h1>Coffee Shop Gallery</h1>
+      <p>
+        Resize your browser window to watch the layout adapt from 4 columns to 2, and then to 1 column.
+      </p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/orange/white?text=Coffee+1" alt="Coffee">
+        <h3>Espresso</h3>
+        <p>Rich and bold flavor.</p>
+        <div class="price">$2.50</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/brown/white?text=Coffee+2" alt="Coffee">
+        <h3>Cappuccino</h3>
+        <p>Foamy and delicious.</p>
+        <div class="price">$3.50</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/black/white?text=Coffee+3" alt="Coffee">
+        <h3>Latte</h3>
+        <p>Smooth and milky.</p>
+        <div class="price">$4.00</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/darkred/white?text=Coffee+4" alt="Coffee">
+        <h3>Mocha</h3>
+        <p>Chocolate infusion.</p>
+        <div class="price">$4.50</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/green/white?text=Coffee+5" alt="Coffee">
+        <h3>Americano</h3>
+        <p>Diluted espresso.</p>
+        <div class="price">$2.75</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/blue/white?text=Coffee+6" alt="Coffee">
+        <h3>Cold Brew</h3>
+        <p>Steeped for 12 hours.</p>
+        <div class="price">$4.25</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/purple/white?text=Coffee+7" alt="Coffee">
+        <h3>Frappe</h3>
+        <p>Iced and blended.</p>
+        <div class="price">$5.00</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://placehold.co/300x200/teal/white?text=Coffee+8" alt="Coffee">
+        <h3>Macchiato</h3>
+        <p>Espresso with foam.</p>
+        <div class="price">$3.00</div>
+        <button class="btn btn-add">Add</button>
+        <button class="btn btn-buy">Buy</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 17: CSS Backgrounds</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      min-height: 100px;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .bg-color {
+      background-color: tomato;
+      color: white;
+    }
+
+    /* Image */
+    .bg-image {
+      background-image: url("https://placehold.co/50x50");
+    }
+
+    .repeat-x {
+      background-image: url("https://placehold.co/50x50");
+      background-repeat: repeat-x;
+    }
+
+    .repeat-y {
+      background-image: url("https://placehold.co/50x50");
+      background-repeat: repeat-y;
+    }
+
+    .no-repeat {
+      background-image: url("https://placehold.co/50x50");
+      background-repeat: no-repeat;
+    }
+
+    .bg-pos {
+      background-image: url("https://placehold.co/50x50");
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px dashed black;
+    }
+
+    .bg-cover {
+      background-image: url("https://placehold.co/150x100");
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+    }
+
+    .bg-contain {
+      background-image: url("https://placehold.co/150x100");
+      background-size: contain;
+      background-repeat: no-repeat;
+      border: 1px dashed black;
+    }
+
+    .clip-border {
+      background-color: gold;
+      border: 10px dashed black;
+      padding: 20px;
+      background-clip: border-box;
+    }
+
+    .clip-padding {
+      background-color: lightblue;
+      border: 10px dashed black;
+      padding: 20px;
+      background-clip: padding-box;
+    }
+
+    .clip-content {
+      background-color: lightgreen;
+      border: 10px dashed black;
+      padding: 20px;
+      background-clip: content-box;
+    }
+
+    .attach-scroll {
+      height: 150px;
+      overflow: scroll;
+      background-image: url("https://placehold.co/50x50");
+      background-attachment: scroll;
+    }
+
+    .attach-local {
+      height: 150px;
+      overflow: scroll;
+      background-image: url("https://placehold.co/50x50");
+      background-attachment: local;
+    }
+
+
+    .linear-down {
+      background-image: linear-gradient(blue, yellow);
+      color: white;
+    }
+
+    .linear-right {
+      background-image: linear-gradient(to right, blue, yellow);
+      color: white;
+    }
+
+    .linear-diag {
+      background-image: linear-gradient(to bottom right, blue, yellow);
+      color: white;
+    }
+
+    .radial {
+      background-image: radial-gradient(circle, red, yellow, green);
+    }
+
+    .repeat-linear {
+      background-image: repeating-linear-gradient(45deg,
+          blue,
+          blue 10px,
+          white 10px,
+          white 20px);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 17: CSS Backgrounds</h1>
+
+  <div id="cssBackgroundsProperties">
+    <h2>CSS Background Properties</h2>
+
+    <h3>Background Color</h3>
+    <pre><code>.bg-color {
+  background-color: tomato;
+}</code></pre>
+    <div class="example bg-color">
+      I have a solid tomato background.
+    </div>
+
+    <h3>Background Repeat</h3>
+    <pre><code>.repeat-x {
+  background-repeat: repeat-x;
+}
+.repeat-y {
+  background-repeat: repeat-y;
+}
+.no-repeat {
+  background-repeat: no-repeat;
+}</code></pre>
+    <div class="example repeat-x">Repeat Horizontal (X)</div>
+    <div class="example repeat-y">Repeat Vertical (Y)</div>
+    <div class="example no-repeat">No Repeat</div>
+
+    <h3>Background Position</h3>
+    <pre><code>.bg-pos {
+  background-position: center;
+}</code></pre>
+    <div class="example bg-pos">
+      The image is positioned in the center.
+    </div>
+
+    <h3>Background Size</h3>
+    <pre><code>/* Cover: Fills the entire area (might cut off image) */
+.bg-cover {
+  background-size: cover;
+}
+
+/* Contain: Shows whole image (might leave empty space) */
+.bg-contain {
+  background-size: contain;
+}</code></pre>
+    <div class="example bg-cover">Size: Cover</div>
+    <div class="example bg-contain">Size: Contain</div>
+
+    <h3>Background Clip</h3>
+    <p>Controls how far the background extends.</p>
+    <pre><code>/* Extends behind the border */
+.clip-border {
+  background-clip: border-box;
+}
+
+/* Extends to the padding edge (stops at border) */
+.clip-padding {
+  background-clip: padding-box;
+}
+
+/* Restricts background to content only */
+.clip-content {
+  background-clip: content-box;
+}</code></pre>
+    <div class="example clip-border">Border Box</div>
+    <div class="example clip-padding">Padding Box</div>
+    <div class="example clip-content">Content Box</div>
+
+    <h3>Background Attachment</h3>
+    <p>Controls if the background scrolls with the page or the element.</p>
+    <pre><code>/* Background stays fixed relative to the box */
+.attach-scroll {
+  background-attachment: scroll;
+}
+
+/* Background scrolls WITH the content */
+.attach-local {
+  background-attachment: local;
+}</code></pre>
+    <div class="example attach-scroll">
+      <p>Scroll (Default):<br>Scroll me!<br>The background<br>stays put<br>relative to border.</p>
+      <br><br><br>
+    </div>
+    <div class="example attach-local">
+      <p>Local:<br>Scroll me!<br>The background<br>moves with<br>the text.</p>
+      <br><br><br>
+    </div>
+  </div>
+
+  <div id="cssGradientProperties">
+    <h2>CSS Gradient Properties</h2>
+
+    <h3>Linear Gradients</h3>
+    <pre><code>.linear-down {
+  background-image: linear-gradient(blue, yellow);
+}
+.linear-right {
+  background-image: linear-gradient(to right, blue, yellow);
+}
+.linear-diag {
+  background-image: linear-gradient(to bottom right, blue, yellow);
+}</code></pre>
+    <div class="example linear-down">Top to Bottom</div>
+    <div class="example linear-right">Left to Right</div>
+    <div class="example linear-diag">Diagonal</div>
+
+    <h3>Radial Gradients</h3>
+    <pre><code>.radial {
+  background-image: radial-gradient(circle, red, yellow, green);
+}</code></pre>
+    <div class="example radial">Radial (Center outwards)</div>
+
+    <h3>Repeating Gradients</h3>
+    <pre><code>.repeat-linear {
+  background-image: repeating-linear-gradient(
+    45deg,
+    blue,
+    blue 10px,
+    white 10px,
+    white 20px
+  );
+}</code></pre>
+    <div class="example repeat-linear">Repeating Pattern</div>
+  </div>
+
+</body>
+
+</html>

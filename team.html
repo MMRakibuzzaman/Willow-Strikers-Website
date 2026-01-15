@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-M">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - The Willow Strikers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .player-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-bg);
+            line-height: 200px;
+            font-style: italic;
+            color: #777;
+        }
+
+        .player-info {
+            padding: 15px;
+        }
+
+        .player-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .player-info p {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>The Willow Strikers</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="book.html" style="cursor: pointer;">Book &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="/chapters/ch01.html">Ch 1: Getting to Know</a>
+                            <a href="/chapters/ch02.html">Ch 2: Elements</a>
+                            <a href="/chapters/ch03.html">Ch 3: Styles</a>
+                            <a href="/chapters/ch04.html">Ch 4: Semantics</a>
+                            <a href="/chapters/ch05.html">Ch 5: Forms</a>
+                            <a href="/chapters/ch06.html">Ch 6: Multimedia</a>
+                            <a href="/chapters/ch07.html">Ch 7: Graphics</a>
+                            <a href="/chapters/ch08.html">Ch 8: Advanced</a>
+                            <a href="/chapters/ch09.html">Ch 9: Tables</a>
+                            <a href="/chapters/ch10.html">Ch 10: Lists</a>
+                            <a href="/chapters/ch11.html">Ch 11: Classes</a>
+                            <a href="/chapters/ch12.html">Ch 12: Selectors</a>
+                            <a href="/chapters/ch13.html">Ch 13: Cascading</a>
+                            <a href="/chapters/ch14.html">Ch 14: Box Model</a>
+                            <a href="/chapters/ch15.html">Ch 15: Colors</a>
+                            <a href="/chapters/ch16.html">Ch 16: Text</a>
+                            <a href="/chapters/ch17.html">Ch 17: Backgrounds</a>
+                            <a href="/chapters/ch18.html">Ch 18: Display</a>
+                            <a href="/chapters/ch19.html">Ch 19: Layout</a>
+                            <a href="/chapters/ch20.html">Ch 20: Animation</a>
+                            <a href="/chapters/ch21.html">Ch 21: Adv CSS</a>
+                            <a href="/chapters/ch22.html">Ch 22: Responsive</a>
+                            <a href="/chapters/book.html"
+                                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                                Full Curriculum</a>
+                        </div>
+                    </li>
+                    <li><a href="stats.html">Stats</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-section">
+            <h2 class="text-center">Meet The Squad</h2>
+            <div class="team-grid">
+
+                <div class="player-card">
+                    <div class="player-img">Captain: A. Sharma</div>
+                    <div class="player-info">
+                        <h4>A. Sharma (Captain)</h4>
+                        <p>Opening Batsman | Right Hand</p>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img">Wicketkeeper: D. Evans</div>
+                    <div class="player-info">
+                        <h4>D. Evans</h4>
+                        <p>Wicketkeeper | All-Rounder</p>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img">Bowler: E. Foster</div>
+                    <div class="player-info">
+                        <h4>E. Foster</h4>
+                        <p>Pace Bowler | Right Arm</p>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img">All-Rounder: B. Khan</div>
+                    <div class="player-info">
+                        <h4>B. Khan</h4>
+                        <p>Key All-Rounder | Left Arm Spin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 The Willow Strikers. Follow us on Social Media!</p>
+            <div class="footer-links">
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

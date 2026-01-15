@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8: Advanced HTML</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+      color: #d63384;
+    }
+
+    .box {
+      color: white;
+      padding: 10px;
+      margin: 5px 0;
+    }
+
+    .d-block {
+      display: block;
+      background-color: tomato;
+      border: 2px solid darkred;
+    }
+
+    .d-inline {
+      display: inline;
+      background-color: slateblue;
+      color: white;
+      padding: 5px;
+    }
+
+    .d-inline-block {
+      display: inline-block;
+      width: 150px;
+      height: 60px;
+      background-color: seagreen;
+      border: 2px solid darkgreen;
+      text-align: center;
+      line-height: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 8: HTML Advanced (Display Types)</h1>
+  <p>Understanding how elements behave on the page (Block vs. Inline) is crucial for layout.</p>
+
+  <h3>1. Block Elements</h3>
+  <p>Block elements start on a new line and take up the full width available. Common examples: <code>&lt;div&gt;</code>,
+    <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>.
+  </p>
+
+  <pre><code>.block-element {
+  display: block;
+  /* Width defaults to 100% */
+}</code></pre>
+
+  <div class="example">
+    <div class="box d-block">I am a Block element (Div 1).</div>
+    <div class="box d-block">I am also a Block element (Div 2).</div>
+    <span>Note how we stack vertically.</span>
+  </div>
+
+  <h3>2. Inline Elements</h3>
+  <p>Inline elements do not start on a new line and only take up as much width as necessary. You cannot set
+    <code>width</code> or <code>height</code> on them. Common examples: <code>&lt;span&gt;</code>,
+    <code>&lt;a&gt;</code>, <code>&lt;b&gt;</code>.
+  </p>
+
+  <pre><code>.inline-element {
+  display: inline;
+  /* Width/Height properties are ignored */
+}</code></pre>
+
+  <div class="example">
+    <p>
+      This is a paragraph with <span class="d-inline">Inline Span 1</span> and <span class="d-inline">Inline Span
+        2</span> inside it.
+    </p>
+  </div>
+
+  <h3>3. Inline-Block Elements</h3>
+  <p>These are a hybrid. They flow horizontally like inline elements, but you <strong>can</strong> set width, height,
+    padding, and margins on them.</p>
+
+  <pre><code>.inline-block-element {
+  display: inline-block;
+  width: 150px;
+  height: 60px;
+}</code></pre>
+
+  <div class="example">
+    <div class="box d-inline-block">Box 1</div>
+    <div class="box d-inline-block">Box 2</div>
+    <div class="box d-inline-block">Box 3</div>
+    <br><br>
+    <span>They sit side-by-side like text, but have dimensions like blocks.</span>
+  </div>
+
+</body>
+
+</html>

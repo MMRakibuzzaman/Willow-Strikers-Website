@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 21: Advanced CSS</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      color: #333;
+    }
+
+    .example {
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    pre {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    :root {
+      --global-color: cornflowerblue;
+      --padding-std: 20px;
+      --border-radius: 10px;
+    }
+
+    .var-box {
+      background-color: var(--global-color);
+      padding: var(--padding-std);
+      border-radius: var(--border-radius);
+      color: white;
+      font-weight: bold;
+    }
+
+    .var-override {
+      --global-color: tomato;
+    }
+
+    .calc-container {
+      border: 2px dashed #333;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .calc-box {
+      background-color: lightseagreen;
+      color: white;
+      padding: 20px;
+      width: calc(100% - 50px);
+    }
+
+    .counter-container {
+      counter-reset: section-counter;
+    }
+
+    .counter-container h3 {
+      counter-increment: section-counter;
+    }
+
+    .counter-container h3::before {
+      content: "Section " counter(section-counter) ": ";
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>The Willow Strikers</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="../book.html" style="cursor: pointer;">Book &#9662;</a>
+            <div class="dropdown-content">
+              <a href="ch01.html">Ch 1: Getting to Know</a>
+              <a href="ch02.html">Ch 2: Elements</a>
+              <a href="ch03.html">Ch 3: Styles</a>
+              <a href="ch04.html">Ch 4: Semantics</a>
+              <a href="ch05.html">Ch 5: Forms</a>
+              <a href="ch06.html">Ch 6: Multimedia</a>
+              <a href="ch07.html">Ch 7: Graphics</a>
+              <a href="ch08.html">Ch 8: Advanced</a>
+              <a href="ch09.html">Ch 9: Tables</a>
+              <a href="ch10.html">Ch 10: Lists</a>
+              <a href="ch11.html">Ch 11: Classes</a>
+              <a href="ch12.html">Ch 12: Selectors</a>
+              <a href="ch13.html">Ch 13: Cascading</a>
+              <a href="ch14.html">Ch 14: Box Model</a>
+              <a href="ch15.html">Ch 15: Colors</a>
+              <a href="ch16.html">Ch 16: Text</a>
+              <a href="ch17.html">Ch 17: Backgrounds</a>
+              <a href="ch18.html">Ch 18: Display</a>
+              <a href="ch19.html">Ch 19: Layout</a>
+              <a href="ch20.html">Ch 20: Animation</a>
+              <a href="ch21.html">Ch 21: Adv CSS</a>
+              <a href="ch22.html">Ch 22: Responsive</a>
+              <a href="../book.html"
+                style="grid-column: 1 / -1; background-color: #003300; font-weight: bold; margin-top: 5px;">View
+                Full Curriculum</a>
+            </div>
+          </li>
+          <li><a href="../stats.html">Stats</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Chapter 21: Advanced CSS</h1>
+
+  <div id="cssVariables">
+    <h2>CSS Variables</h2>
+    <p>Variables allow you to store values (like colors or sizes) and reuse them throughout the stylesheet.</p>
+
+    <pre><code>:root {
+  --primary-color: cornflowerblue;
+  --padding-std: 20px;
+}
+
+.var-box {
+  background-color: var(--primary-color);
+  padding: var(--padding-std);
+}
+
+.var-override {
+  --primary-color: tomato; /* Local override */
+}</code></pre>
+
+    <div class="example">
+      <div class="var-box">
+        I use the global primary color (Blue).
+      </div>
+      <br>
+      <div class="var-box var-override">
+        I use a locally overridden primary color (Tomato).
+      </div>
+    </div>
+  </div>
+
+  <div id="cssCalculation">
+    <h2>CSS Calculation calc()</h2>
+    <p>Allows you to perform calculations to determine property values, mixing different units (e.g., % and px).</p>
+
+    <pre><code>.calc-box {
+  /* The width is 100% of the parent minus 50px */
+  width: calc(100% - 50px); 
+}</code></pre>
+
+    <div class="example">
+      <div class="calc-container">
+        <div class="calc-box">
+          My width is <code>calc(100% - 50px)</code>.
+          <br>
+          Resize the browser to see me adapt.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cssCounters">
+    <h2>CSS Counters</h2>
+    <p>Automatic numbering managed by CSS, not HTML.</p>
+
+    <pre><code>.counter-container {
+  counter-reset: section-counter;
+}
+
+.counter-container h3 {
+  counter-increment: section-counter;
+}
+
+.counter-container h3::before {
+  content: "Section " counter(section-counter) ": ";
+}</code></pre>
+
+    <div class="example counter-container">
+      <h3>HTML Tutorial</h3>
+      <p>Introduction to HTML...</p>
+
+      <h3>CSS Tutorial</h3>
+      <p>Introduction to Styling...</p>
+
+      <h3>JavaScript Tutorial</h3>
+      <p>Introduction to Scripting...</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
