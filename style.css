@@ -111,6 +111,10 @@ header nav li:hover .dropdown-content {
   display: grid;
 }
 
+header nav li:focus-within .dropdown-content {
+  display: grid;
+}
+
 main {
   flex: 1;
 }
